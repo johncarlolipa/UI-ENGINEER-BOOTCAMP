@@ -17,10 +17,7 @@ export default function Home() {
       <Button text="Warning" type="warning" variant="outline" arrowLeft={<ArrowLeft size={16} />} arrowRight={<ArrowRight size={16} />} />
       <Button text="Information" type="info" variant="outline" arrowLeft={<ArrowLeft size={16} />} arrowRight={<ArrowRight size={16} />} />
 
-
-      <Card size="large" variant="shadow" imageSrc="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&w=800" imageAlt="beautiful beach" title="Discover New Ideas" subtitle="Inspiration & Creativity" description="Explore stories, learn techniques, and find inspiration every day." tags={["Design", "UX", "Inspire"]} footer={
-        <div className="flex justify-end gap-2"><Button text="Save" variant="outline" type="info" /><Button text="Open" variant="filled" type="primary" /></div>}
-      />
+      <Card size="large" imageSrc="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&w=800" imageAlt="beautiful beach" title="Design The World" subtitle="Enjoy Life at the Beach" tags={["Bali", "Boracay"]} description="You will love this beach baby!" footer={<div className="flex justify-end gap-4"><Button text="Save" variant="outline" type="info" /><Button text="Learn More" variant="filled" type="primary" /> </div>} />
 
 
     </div>
