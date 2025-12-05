@@ -2,38 +2,34 @@
 import clsx from "clsx";
 import { ReactNode } from "react";
 
-//defining the variant
+
 type sizeClasses = "small" | "medium" | "large";
-type variantClasses = "default" | "shadow" | "flat" | "outlined"
+type variantClasses = "default" | "shadow" | "outlined" | "flat";
 
-
-//defining the props
 type CardProps = {
-    imageSrc?: string;
-    imageAlt?: string;
-    title: string;
-    subtitle: string;
-    description?: string;
-    footer?: ReactNode;
-    tags?: [];
-    size?: sizeClasses;
-    variant?: variantClasses;
-    className?: string;
+    imageSrc?: string,
+    imageAlt?: string,
+    title: string,
+    subtitle: string,
+    description?: string,
+    tags?: [],
+    size?: sizeClasses,
+    variant?: variantClasses,
+    footer?: ReactNode,
+    className?: string,
+
 }
 
+
 export function Card({
-    imageAlt, imageSrc, title, subtitle, description, size = "medium", variant = "default",
-    tags = [], footer, className
+    imageSrc, imageAlt, title, subtitle, description, tags = [], size = "medium", variant = "default", footer, className
 }: CardProps) {
     const baseClasses = "rounded-2xl overflow-hidden transition-all duration-300 bg-white";
 
-    const sizeClasses =
-    {
+    const sizeClasses = {
         small: "max-w-xs p-3 space-y-2",
         medium: "max-w-sm p-4 space-y-3",
         large: "max-w-md p-6 space-y-4",
-
-
     }
 
     const variantClasses = {
@@ -43,12 +39,11 @@ export function Card({
         flat: "border border-transparent shadow-none",
     }
 
+
+
     return (
-        <article className={clsx(baseClasses, sizeClasses[size], variantClasses[variant], className
-        )}>
-            {imageSrc && (
-                <img src={imageSrc} alt={imageAlt} className="w-full h-40 sm:h-48 object-cover rounded-xl" loading='lazy' />
-            )}
+        <article className={clsx(baseClasses, sizeClasses[size], variantClasses[variant], className)}>
+            {imageSrc && (<img src={imageSrc} alt={imageAlt} className="w-full h-40 sm:h-48 object-cover rounded-xl" loading="lazy" />)}
 
             <header>
                 <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
@@ -61,10 +56,11 @@ export function Card({
                 {tags.map((tag) => (
                     <span className="px-2 py-1 text-xs bg-gray-100 rounded-full">{tag}</span>
                 ))}
+
             </div>)}
 
             {footer && (<div className="pt-2">{footer}</div>)}
-
         </article>
     )
+
 }
