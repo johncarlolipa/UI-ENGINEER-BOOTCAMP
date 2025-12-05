@@ -54,7 +54,7 @@ export function Card({
 
             {tags.length > 0 && (<div>
                 {tags.map((tag) => (
-                    <span className="px-2 py-1 text-xs bg-gray-100 rounded-full">{tag}</span>
+                    <span className="px-2 py-1 text-xs text-black bg-gray-100 rounded-full">{tag}</span>
                 ))}
 
             </div>)}
