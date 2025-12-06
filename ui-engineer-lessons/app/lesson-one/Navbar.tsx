@@ -3,6 +3,8 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import clsx from "clsx";
+import { Button } from "./Button";
+import { useRouter } from "next/navigation";
 
 // define the variants
 type variantClasses = "dark" | "light";
@@ -16,15 +18,17 @@ type NavbarProps = {
     size?: sizeClasses;
     variant?: variantClasses;
     className?: string;
+    buttonLabel?: string;
 }
 
 //create component
 export function Navbar({
     // destructuring props
-    title, links = [], size = "medium", variant = "light", className
+    title, links = [], size = "medium", variant = "light", className, buttonLabel
 }: NavbarProps) {
 
     const [open, setOpen] = useState(false);
+    const router = useRouter();
 
     const baseClasses = "w-full flex items-center justify-between transition-all duration-300"
 
@@ -51,6 +55,11 @@ export function Navbar({
                 ))}
             </ul>
 
+            {buttonLabel && (
+                <Button text={buttonLabel} type="primary" variant="outline" size="medium" onClick={() => router.push("/")} className="hidden md:flex" />
+            )}
+
+
             <button onClick={() => setOpen(!open)} className="md:hidden" aria-label="Toggle Menu">{open ? <X size={24} /> : <Menu size={24} />}</button>
 
             {open && (
@@ -58,6 +67,12 @@ export function Navbar({
                     {links.map((link) => (
                         <li key={link} className="cursor-pointer hover:opacity-80 ">{link}</li>
                     ))}
+
+                    {buttonLabel && (
+                        <li>
+                            <Button text={buttonLabel} type="primary" variant="outline" size="medium" onClick={() => router.push("/")} className="w-full justify-center" />
+                        </li>
+                    )}
                 </ul>
             )}
 

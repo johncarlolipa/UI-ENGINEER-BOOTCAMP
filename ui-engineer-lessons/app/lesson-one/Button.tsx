@@ -13,12 +13,14 @@ type ButtonProps = {
   arrowRight?: ReactNode;
   size?: ButtonSize;
   variant?: ButtonVariants;
-  type?: ButtonType
+  type?: ButtonType;
+  onClick?: () => void;
+  className?: string;
 }
 
 
 export function Button({
-  text, size = 'medium', variant = "filled", type = "primary", arrowLeft, arrowRight
+  text, size = 'medium', variant = "filled", type = "primary", arrowLeft, arrowRight, onClick, className
 }: ButtonProps) {
   const baseClasses = 'rounded-md flex items-center gap-2 transition-colors duration-300';
 
@@ -49,7 +51,7 @@ export function Button({
 
 
   return (
-    <button className={clsx(baseClasses, sizeClasses[size], variantClasses[variant][type])} disabled = {type === 'disabled'}>
+    <button onClick={onClick} className={clsx(baseClasses, sizeClasses[size], variantClasses[variant][type], className)} disabled = {type === 'disabled'}>
       {arrowLeft && <span>{arrowLeft}</span>}
       <span>{text}</span>
       {arrowRight && <span>{arrowLeft}</span>}
