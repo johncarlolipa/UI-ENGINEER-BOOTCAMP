@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-4 bg-zinc-50 font-sans dark:bg-white text-black">
 
-      <Navbar title="Lumora" links={["Home", "Pricing", "Features"]} variant="dark" size="large" />
+      <Navbar title="Lumora" links={["Home", "Pricing", "Features"]} variant="dark" size="large"/>
 
       <Button text="Primary" type="primary" variant="filled" arrowLeft={<ArrowLeft size={16} />} arrowRight={<ArrowRight size={16} />} />
       <Button text='Success' type='success' variant="filled" arrowLeft={<ArrowLeft size={16} />} arrowRight={<ArrowRight size={16} />} />
