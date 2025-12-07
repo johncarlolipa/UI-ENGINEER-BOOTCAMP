@@ -21,14 +21,17 @@ export default function Home() {
       <Input
         type="phone"
         label="Phone Number"
-        state="disabled"
         leftIcon={<Phone size={16} />}
         rightIcon={<ChevronDown size={24} />}
+        onChange={(e) => {
+          console.log(e.target.value)
+        }}
       />
       <Input
         type="sale"
         label="Price"
         state="error"
+        required={true}
         leftIcon={<span className="text-gray-600 text-md">$</span>}
         rightIcon={<ChevronDown size={24} />}
       />
@@ -41,7 +44,7 @@ export default function Home() {
         type="card"
         label="Card Number"
         rightIcon={<CreditCard size={16} />}
-        rightSecondIcon={<CreditCard size={16} />}
+        secondRightIcon={<CreditCard size={16} />}
       />
 
       <Input size="small" state="active" />
