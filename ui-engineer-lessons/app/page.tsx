@@ -11,50 +11,17 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-4 bg-zinc-50 font-sans dark:bg-white text-black">
 
-      <Input
-        type="email"
-        label="Email"
-        hint="This is a hint copy"
-        leftIcon={<Mail size={16} />}
-        rightIcon={<HelpCircle size={16} />}
-      />
-      <Input
-        type="phone"
-        label="Phone Number"
-        leftIcon={<Phone size={16} />}
-        rightIcon={<ChevronDown size={24} />}
-        onChange={(e) => {
-          console.log(e.target.value)
-        }}
-      />
-      <Input
-        type="sale"
-        label="Price"
-        state="error"
-        required={true}
-        leftIcon={<span className="text-gray-600 text-md">$</span>}
-        rightIcon={<ChevronDown size={24} />}
-      />
-      <Input
-        type="website"
-        label="Website"
-        leftIcon={<span className="text-gray-500 text-sm">http://</span>}
-      />
-      <Input
-        type="card"
-        label="Card Number"
-        rightIcon={<CreditCard size={16} />}
-        secondRightIcon={<CreditCard size={16} />}
-      />
+    <Input type="email" label="Email" placeholder="Email address" hint="This is hint copy" required={true} rightIcon={<HelpCircle />} leftIcon={<Mail />} />
+    <Input type="website" label="Website" hint="This is hint copy" placeholder="https://" leftIcon={<Globe />} rightIcon={<HelpCircle />} />
+    <Input type="sale" label="Price" placeholder="100" hint="This is hint copy" leftIcon={<span>$</span>} rightIcon={<ChevronDown />}  />
+    <Input type="card" label="Card" placeholder="Card" hint="This is hint copy" rightIcon={<CreditCard />} secondRightIcon={<CreditCard />} />
+    <Input type="phone" label="Phone Number (optional)" hint="This is hint copy" leftIcon={<Phone />} rightIcon={<HelpCircle />}/>
 
-      <Input size="small" state="active" />
-
-      <Input size="medium" state="error" />
-
-      <Input size="medium" state="disabled" />
-
-      <Input size="small" state="placeholder" />
-      <Input size="medium" state="default" />
+    <Input type="email" status="error" hint="This is hint copy" label="Email address" />
+    <Input type="email" status="disabled" hint="This is hint copy" label="Email address" />
+    <Input type="email" status="placeholder" hint="This is hint copy" label="Email address" placeholder="Email" />
+    <Input type="email" status="active" hint="This is hint copy" label="Email address" />
+    <Input type="email" status="default" hint="This is hint copy" label="Email address" />
 
 
 

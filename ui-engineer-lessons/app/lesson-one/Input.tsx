@@ -1,68 +1,73 @@
 
+
 import clsx from "clsx";
-import { ReactNode, ChangeEvent } from "react";
+import { ChangeEvent, ReactNode } from "react";
 
-//define the variants
-type InputSize = "small" | "medium"
-type InputState = "default" | "error" | "active" | "placeholder" | "disabled"
-type InputType = "default" | "email" | "card" | "website" | "phone" | "sale"
 
-//define the props
+//define variants
+type InputSize = "small" | "medium";
+type InputType = "default" | "card" | "email" | "website" | "phone" | "sale"
+type InputStatus = "default" | "active" | "error" | "disabled" | "placeholder"
+
+//define props
 type InputProps = {
     size?: InputSize;
-    state?: InputState;
     type?: InputType;
-    label?: string;
-    showLabel?: boolean;
-    required?: boolean;
-    hint: string;
-    showHint?: boolean;
-    className?: string;
-    value?: string;
-    placeholder?: string;
-    leftIcon?: ReactNode;
+    status?: InputStatus;
+    leftIcon?: ReactNode
     rightIcon?: ReactNode;
     secondRightIcon?: ReactNode;
-    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    className?: string;
+    onChange?: (e: ChangeEvent<HTMLImageElement>) => void;
+    label?: string;
+    showLabel?: boolean;
+    hint?: string;
+    showHint?: boolean;
+    placeholder?: string;
+    required?: boolean;
+    value?: string;
 }
 
-export function Input({
-    size = "medium", state = "default", type = "default", label, showLabel = true, required = false, hint, showHint = true, value, placeholder, leftIcon, rightIcon, secondRightIcon, className, onChange
-}: InputProps) {
-    const wrapperClasses = "flex flex-col gap-1"
+//define component
+
+export function Input ({
+size="medium", label, type="default", status = "default", rightIcon, secondRightIcon, leftIcon, showHint = true, showLabel = true, placeholder, required=false, onChange, className, value, hint
+}: InputProps){
+    const wrapperClasses = ""
+
     const sizeClasses = {
         small: "py-2 px-2 text-sm",
-        medium: "py-4 px-4 text-md"
+        medium:"px-4 py-4 text-base"
     }
-    const stateClasses = {
-        default: "border border-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200",
-        error: "border border-red-500 text-red-600 focus:ring-red-200",
-        active: "border border-blue-500 ring-2 ring-blue-200",
-        placeholder: "border border-gray-300 text-gray-400",
-        disabled: "border border-gray-300 bg-gray-100 cursor-not-allowed"
 
+    const statusClasses = {
+        default: "border focus:border-blue-500 focus:ring-2 focus:ring-blue-200",
+        error: "border border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-200",
+        active: "border border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 ",
+        placeholder: "border border-gray-400 text-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-200",
+        disabled: "border border-gray-300 cursor-not-allowed bg-gray-200"
     }
+
     const typeClasses = {
         default: "",
         email: "",
-        phone: "pr-12",
         website: "pl-14",
+        sale: "pl-12",
         card: "pr-16",
-        sale: "pr-12"
+        phone: "pr-12"
     }
 
-    const inputClasses = clsx("w-full rounded-md transition-all outline-none", sizeClasses[size], typeClasses[type], stateClasses[state], leftIcon && "pl-10", (rightIcon || secondRightIcon) && "pr-10")
-
+    const inputClasses = clsx("w-full rounded-md transition-all outline-none", sizeClasses[size], typeClasses[type], statusClasses[status], leftIcon && ("pl-10"), rightIcon || secondRightIcon && ("pr-10"));
 
     return (
-        <div className={clsx(wrapperClasses, className)}>
+        <div className="flex flex-col">
             {showLabel && label && (
                 <label className="font-medium text-gray-700">{label}{required && "*"}</label>
             )}
 
             <div className="relative flex items-center">
                 {leftIcon && (<span className="absolute left-3">{leftIcon}</span>)}
-                <input value={value} onChange={onChange} className={inputClasses} placeholder={placeholder} />
+                <input value={value} className={inputClasses} placeholder={placeholder}  />
                 {rightIcon && (<span className="absolute right-3">{rightIcon}</span>)}
                 {secondRightIcon && (<span className="absolute right-9">{secondRightIcon}</span>)}
             </div>
@@ -72,6 +77,4 @@ export function Input({
             )}
         </div>
     )
-
 }
-
